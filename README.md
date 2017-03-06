@@ -1,6 +1,25 @@
 # influxdb plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-influxdb)
+[![Build Status](https://travis-ci.org/giginet/fastlane-plugin-influxdb.svg?branch=master)](https://travis-ci.org/giginet/fastlane-plugin-influxdb)
+
+## Description
+
+Post values to InfluxDB from your lane.
+
+```ruby
+lane :your_lane do
+    indluxdb(
+        db_name: "sample_db",
+        host: "fastlane.influxdb.com",
+        port: 1234,
+        username: "sample",
+        password: "password",
+        table_name: "metrics",
+        values: {a: 100, b: 200, c: 300}
+    )
+end
+```
 
 ## Getting Started
 
@@ -9,18 +28,6 @@ This project is a [fastlane](https://github.com/fastlane/fastlane) plugin. To ge
 ```bash
 fastlane add_plugin influxdb
 ```
-
-## About influxdb
-
-Post metrics to IndluxDB
-
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
-
-## Example
-
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
 
 ## Run tests for this plugin
 
