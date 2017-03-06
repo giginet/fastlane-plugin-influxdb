@@ -13,7 +13,7 @@ module Fastlane
         )
 
         begin
-          client.write_point(params[:table_name], {values: params[:values]})
+          client.write_point(params[:table_name], { values: params[:values] })
         rescue => e
           response = JSON.parse(e.to_s)
           UI.user_error!(response['error'])
