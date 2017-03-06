@@ -14,6 +14,7 @@ module Fastlane
 
         begin
           client.write_point(params[:table_name], { values: params[:values] })
+          UI.success("Successfully posted values to '#{params[:table_name]}'")
         rescue => e
           response = JSON.parse(e.to_s)
           UI.user_error!(response['error'])
