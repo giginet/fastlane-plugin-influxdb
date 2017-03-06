@@ -79,7 +79,7 @@ module Fastlane
 
       def self.example_code
         [
-          'indluxdb(
+          'influxdb(
             db_name: "sample_db",
             host: "fastlane.influxdb.com",
             port: 1234,
