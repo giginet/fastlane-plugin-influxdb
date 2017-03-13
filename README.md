@@ -9,7 +9,7 @@ Post values to InfluxDB from your lane.
 
 ```ruby
 lane :your_lane do
-    indluxdb(
+    influxdb(
         db_name: "sample_db",
         host: "fastlane.influxdb.com",
         port: 1234,
