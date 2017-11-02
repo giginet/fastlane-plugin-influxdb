@@ -19,6 +19,8 @@ describe Fastlane::Actions::InfluxdbAction do
       {
         db_name: 'db_name',
         host: 'example.com',
+        use_ssl: true,
+        verify_ssl: true,
         username: 'user',
         password: 'password',
         table_name: table_name,
