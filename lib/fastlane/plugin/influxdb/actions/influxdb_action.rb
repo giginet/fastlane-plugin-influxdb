@@ -13,7 +13,7 @@ module Fastlane
         )
 
         begin
-          client.write_point(params[:table_name], { values: params[:values] })
+          client.write_point(params[:table_name], { tags: params[:tags], values: params[:values] })
           UI.success("Successfully posted values to '#{params[:table_name]}'")
         rescue StandardError => e
           response = JSON.parse(e.to_s)
@@ -70,6 +70,10 @@ module Fastlane
                                description: "Table name of InfluxDB",
                                   optional: false,
                                   type: String),
+          FastlaneCore::ConfigItem.new(key: :tags,
+                               description: "Tags to post",
+                                  optional: true,
+                                      type: Hash),
           FastlaneCore::ConfigItem.new(key: :values,
                                description: "Values to post",
                                   optional: false,
@@ -86,6 +90,7 @@ module Fastlane
             username: "sample",
             password: "password",
             table_name: "metrics",
+            tags: {tag1: "foo", tag2: "bar"}
             values: {a: 100, b: 200, c: 300}
           )'
         ]

@@ -16,6 +16,7 @@ lane :your_lane do
         username: "sample",
         password: "password",
         table_name: "metrics",
+        tags: {tag1: "foo", tag2: "bar"},
         values: {a: 100, b: 200, c: 300}
     )
 end

@@ -3,6 +3,12 @@ require 'influxdb'
 describe Fastlane::Actions::InfluxdbAction do
   describe '#run' do
     let(:table_name) { 'table_name' }
+    let(:tags) do
+      {
+        x: "foo",
+        y: "bar"
+      }
+    end
     let(:values) do
       {
         a: 1,
@@ -16,6 +22,7 @@ describe Fastlane::Actions::InfluxdbAction do
         username: 'user',
         password: 'password',
         table_name: table_name,
+        tags: tags,
         values: values
       }
     end
@@ -23,7 +30,7 @@ describe Fastlane::Actions::InfluxdbAction do
     context 'with valid parameter' do
       before do
         allow_any_instance_of(InfluxDB::Client).to receive(:write_point)
-          .with(table_name, { values: values })
+          .with(table_name, { tags: tags, values: values })
           .and_return(nil)
       end
 
@@ -37,7 +44,7 @@ describe Fastlane::Actions::InfluxdbAction do
       let(:response) { { error: 'authorization failed' } }
       before do
         allow_any_instance_of(InfluxDB::Client).to receive(:write_point)
-          .with(table_name, { values: values })
+          .with(table_name, { tags: tags, values: values })
           .and_raise(JSON.generate(response))
       end
 
