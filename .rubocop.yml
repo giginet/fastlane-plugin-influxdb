@@ -203,3 +203,9 @@ Style/IfInsideElse:
 # Sometimes we just want to 'collect'
 Style/CollectionMethods:
   Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - Gemfile
+    - Rakefile
+    - '*.gemspec'
