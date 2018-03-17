@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'giginet'
   spec.email         = 'giginet.net@gmail.com'
 
-  spec.summary       = 'Post values to IndluxDB'
+  spec.summary       = 'Post values to InfluxDB'
   spec.homepage      = "https://github.com/giginet/fastlane-plugin-influxdb"
   spec.license       = "MIT"
 

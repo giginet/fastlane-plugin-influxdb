@@ -13,9 +13,12 @@ lane :your_lane do
         db_name: "sample_db",
         host: "fastlane.influxdb.com",
         port: 1234,
+        use_ssl: true,
+        verify_ssl: true,
         username: "sample",
         password: "password",
         table_name: "metrics",
+        tags: {tag1: "foo", tag2: "bar"},
         values: {a: 100, b: 200, c: 300}
     )
 end

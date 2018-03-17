@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fastlane-plugin-influxdb (0.1.0)
+    fastlane-plugin-influxdb (0.2.0)
 
 GEM
   remote: https://rubygems.org/

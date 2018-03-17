@@ -8,12 +8,14 @@ module Fastlane
           params[:db_name],
           host: params[:host],
           port: params[:port],
+          use_ssl: params[:use_ssl],
+          verify_ssl: params[:verify_ssl],
           username: params[:username],
           password: params[:password]
         )
 
         begin
-          client.write_point(params[:table_name], { values: params[:values] })
+          client.write_point(params[:table_name], { tags: params[:tags], values: params[:values] })
           UI.success("Successfully posted values to '#{params[:table_name]}'")
         rescue StandardError => e
           response = JSON.parse(e.to_s)
@@ -55,6 +57,18 @@ module Fastlane
                                   optional: false,
                              default_value: 8086,
                                       type: Integer),
+          FastlaneCore::ConfigItem.new(key: :use_ssl,
+                                  env_name: "INFLUXDB_USE_SSL",
+                               description: "Whether or not to use SSL (HTTPS)",
+                                  optional: true,
+                             default_value: false,
+                                 is_string: false),
+          FastlaneCore::ConfigItem.new(key: :verify_ssl,
+                                  env_name: "INFLUXDB_VERIFY_SSL",
+                               description: "Verify certificate when using SSL",
+                                  optional: true,
+                             default_value: true,
+                                 is_string: false),
           FastlaneCore::ConfigItem.new(key: :username,
                                   env_name: "INFLUXDB_USERNAME",
                                description: "User name of InfluxDB",
@@ -69,7 +83,11 @@ module Fastlane
                                   env_name: "INFLUXDB_TABLE_NAME",
                                description: "Table name of InfluxDB",
                                   optional: false,
-                                  type: String),
+                                      type: String),
+          FastlaneCore::ConfigItem.new(key: :tags,
+                               description: "Tags to post",
+                                  optional: true,
+                                      type: Hash),
           FastlaneCore::ConfigItem.new(key: :values,
                                description: "Values to post",
                                   optional: false,
@@ -83,9 +101,11 @@ module Fastlane
             db_name: "sample_db",
             host: "fastlane.influxdb.com",
             port: 1234,
+            use_ssl: true,
             username: "sample",
             password: "password",
             table_name: "metrics",
+            tags: {tag1: "foo", tag2: "bar"}
             values: {a: 100, b: 200, c: 300}
           )'
         ]
