@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    fastlane-plugin-influxdb (0.2.0)
+    fastlane-plugin-influxdb (0.2.1)
+      influxdb
 
 GEM
   remote: https://rubygems.org/
@@ -216,7 +217,6 @@ DEPENDENCIES
   bundler
   fastlane (>= 2.12.0)
   fastlane-plugin-influxdb!
-  influxdb
   pry
   rake
   rspec
