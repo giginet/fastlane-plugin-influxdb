@@ -1,7 +1,7 @@
 # influxdb plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-influxdb)
-[![Build Status](https://travis-ci.org/giginet/fastlane-plugin-influxdb.svg?branch=master)](https://travis-ci.org/giginet/fastlane-plugin-influxdb)
+![Ruby](https://github.com/giginet/fastlane-plugin-influxdb/workflows/Ruby/badge.svg)
 
 ## Description
 
